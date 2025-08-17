@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ephemeral Urbanism in Barcelona</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    #map { height: 100vh; }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    var map = L.map('map').setView([41.3851, 2.1734], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    var locations = [
+      ["Pl. de Catalunya", 41.3870, 2.1701],
+      ["Avinguda Reina Maria Cristina", 41.3725, 2.1516],
+      ["Pl. de Sant Jaume", 41.3826, 2.1774],
+      ["La Rambla", 41.3809, 2.1731],
+      ["Parc de la Ciutadella", 41.3890, 2.1870],
+      ["Plaça de la Mercè", 41.3766, 2.1796],
+      ["Montjuïc Castle", 41.3636, 2.1650],
+      ["Parc del Fòrum", 41.4090, 2.2185],
+      ["Gothic Quarter", 41.3830, 2.1769],
+      ["Gràcia", 41.4030, 2.1570],
+      ["Sants", 41.3735, 2.1408]
+    ];
+
+    locations.forEach(function(loc) {
+      L.marker([loc[1], loc[2]]).addTo(map)
+        .bindPopup("<b>" + loc[0] + "</b>");
+    });
+  </script>
+</body>
+</html>
